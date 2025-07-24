@@ -1,6 +1,15 @@
+{{ config(materialized='view') }}
+
 WITH ranked AS (
-    SELECT ad_id, account_id, ad_name,adset_name, impressions, date, cpc, cpm, ctr, frequency, spend, reach,
-    ROW_NUMBER() OVER (PARTITION BY ad_id,account_id, date ORDER BY spend DESC NULLS LAST) AS row_num
+    SELECT
+        ad_id,
+        account_id::TEXT AS account_id,
+        ad_name,
+        adset_name,
+        impressions,
+        date::DATE AS date,
+        cpc, cpm, ctr, frequency, spend, reach,
+        ROW_NUMBER() OVER (PARTITION BY ad_id, account_id, date ORDER BY spend DESC NULLS LAST) AS row_num
     FROM {{ source('facebooks_ads', 'basic_ad') }}
 )
 

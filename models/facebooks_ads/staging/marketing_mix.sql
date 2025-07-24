@@ -1,5 +1,7 @@
+{{ config(materialized='table') }}
+
 WITH ranked AS (
-    SELECT account_id, adset_id, date, country, region, dma, device_platform, publisher_platform, platform_position, spend, impressions, 
+    SELECT account_id::TEXT AS account_id, adset_id, date::DATE AS date, country, region, dma, device_platform, publisher_platform, platform_position, spend, impressions, 
     ROW_NUMBER() OVER (PARTITION BY account_id, adset_id, country, region, date ORDER BY spend DESC NULLS LAST) AS row_num
     FROM {{ source('facebooks_ads', 'marketing_mix_modeling') }}
 )

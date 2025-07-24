@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH creative_data AS (
     SELECT *
     FROM {{ ref('creative') }}

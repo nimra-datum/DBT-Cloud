@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH ranked AS (
     SELECT
         ac.creative_id,

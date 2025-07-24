@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH ranked_campaigns AS (
   SELECT 
     c.campaign_id,

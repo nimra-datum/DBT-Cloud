@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH calculation_cte AS (
     SELECT a.ad_id, a.ad_group_id, g.campaign_id ,g. customer_id , a.date , a.device,  
     SUM(a.impressions) AS total_impressions,

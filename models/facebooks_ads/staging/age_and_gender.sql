@@ -1,5 +1,7 @@
+{{ config(materialized='table') }}
+
 WITH ranked AS (
-    SELECT account_id, age, gender, date, impressions, reach, cpc, cpm, ctr, frequency, spend, 
+    SELECT account_id::TEXT as account_id, age, gender, date::DATE as date, impressions, reach, cpc, cpm, ctr, frequency, spend, 
     ROW_NUMBER() OVER (PARTITION BY account_id, age, gender,date ORDER BY spend DESC NULLS LAST) AS row_num
     FROM {{ source('facebooks_ads', 'demographics_age_and_gender') }}
 )

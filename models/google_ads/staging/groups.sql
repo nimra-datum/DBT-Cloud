@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH ranked AS (
   SELECT *,
          ROW_NUMBER() OVER (
