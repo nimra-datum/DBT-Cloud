@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'analysess'
+name: 'analytics'
 version: '1.0.0'
 config-version: 2
 
@@ -36,9 +36,27 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  analyses:
+  analytics:
     # Applies to all files under models/example/
-    facebook_ads:
       staging:
+        facebooks_ads:
+         +materialized: table
+         schema: marketing_dbt
+
+        google_ads:
+          +materialized: table
+          schema: marketing_dbt
+
+        linkedin_ads:
+          +materialized: table
+          schema: marketing_dbt
+      
+      intermediate:
         +materialized: table
         schema: marketing_dbt
+      
+      mart:
+        +materialized: table
+        schema: marketing_dbt
+
+
