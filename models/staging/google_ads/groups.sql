@@ -1,8 +1,7 @@
 WITH ranked AS (
-  SELECT *,
+  SELECT id,name,status,campaign_id,
          ROW_NUMBER() OVER (
-           PARTITION BY base_ad_group_id
-           ORDER BY updated_at DESC NULLS LAST  -- If available
+           PARTITION BY id, name, campaign_id, status
          ) AS row_num
   FROM {{ source('google_ads', 'ad_group_history') }}
 )
