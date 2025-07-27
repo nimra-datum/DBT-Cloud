@@ -1,0 +1,10 @@
+target: dev
+outputs:
+  dev:
+    type: postgres
+    host: 104.248.248.69
+    user: postgres
+    password: neEs2w6QNU0YplJMChzGuxA8Zo7DI93
+    dbname: postgres
+    schema: marketing_dbt
+    threads: 10
