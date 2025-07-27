@@ -1,12 +1,5 @@
 WITH ranked AS (
-    SELECT
-        ac.creative_id,
-        ch.name,
-        EXTRACT(MONTH FROM ac.day) AS month_,
-        ac.clicks,
-        ac.impressions,
-        ac.cost_in_usd,
-        ac.cost_in_local_currency,
+    SELECT ac.creative_id,ch.name as creative_name,CAST(ac.day AS DATE) AS date,ac.clicks,ch.account_id, ac.impressions,ac.cost_in_usd,
         ROW_NUMBER() OVER (
             PARTITION BY creative_id, day  
             ORDER BY cost_in_usd DESC NULLS LAST  

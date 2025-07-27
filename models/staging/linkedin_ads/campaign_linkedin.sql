@@ -1,15 +1,7 @@
 WITH ranked_campaigns AS (
   SELECT 
-    c.campaign_id,
-    cg.name,
-    cg.status,
-    cg.account_id,
-    c.day,
-    EXTRACT(MONTH FROM c.day) AS month_,
-    c.clicks,
-    c.impressions,
-    c.cost_in_local_currency,
-    c.cost_in_usd,
+    c.campaign_id, cg.name as campaign_name, cg.status, cg.account_id, c.day, CAST(c.day AS DATE) AS date,
+    c.clicks, c.impressions, c.cost_in_usd,
     ROW_NUMBER() OVER (
       PARTITION BY c.campaign_id, EXTRACT(MONTH FROM c.day)
       ORDER BY c.day DESC
