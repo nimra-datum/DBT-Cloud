@@ -6,7 +6,7 @@ Try running the following commands:
 - dbt run
 - dbt test
 
-
+## Documentation Link: https://docs.google.com/document/d/1MZ0Ii-HY8FMCSunuoMUYSOnEoq_lwHLPUBv20Jm1c7o/edit?usp=sharing
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
 - Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
