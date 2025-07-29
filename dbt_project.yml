@@ -37,7 +37,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   analytics:
-    # Applies to all files under models/example/
       staging:
         facebooks_ads:
          +materialized: table
@@ -52,8 +51,17 @@ models:
           schema: marketing_dbt
       
       intermediate:
-        +materialized: table
-        schema: marketing_dbt
+        facebooks_inter:
+         +materialized: table
+         schema: marketing_dbt
+        
+        google_inter:
+          +materialized: table
+          schema: marketing_dbt
+
+        linkedin_inter:
+          +materialized: table
+          schema: marketing_dbt
       
       mart:
         +materialized: table
